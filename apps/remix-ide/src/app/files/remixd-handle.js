@@ -42,6 +42,7 @@ export class RemixdHandle extends WebsocketPlugin {
     if (super.socket) super.deactivate()
     // this.appManager.deactivatePlugin('git') // plugin call doesn't work.. see issue https://github.com/ethereum/remix-plugin/issues/342
     if (this.appManager.actives.includes('hardhat')) this.appManager.deactivatePlugin('hardhat')
+    if (this.appManager.actives.includes('slither')) this.appManager.deactivatePlugin('slither')
     this.localhostProvider.close((error) => {
       if (error) console.log(error)
     })
@@ -85,6 +86,7 @@ export class RemixdHandle extends WebsocketPlugin {
         }, 3000)
         this.localhostProvider.init(() => {})
         this.call('manager', 'activatePlugin', 'hardhat')
+        this.call('manager', 'activatePlugin', 'slither')
       }
     }
     if (this.localhostProvider.isConnected()) {
