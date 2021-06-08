@@ -19,7 +19,8 @@ export default class WebSocket {
     const listeners = {
       65520: 'remixd',
       65521: 'git',
-      65522: 'hardhat'
+      65522: 'hardhat',
+      65523: 'slither'
     }
     this.server.listen(this.port, loopback, () => {
       console.log('\x1b[32m%s\x1b[0m', `[INFO] ${new Date()} ${listeners[this.port]} is listening on ${loopback}:${this.port}`)
